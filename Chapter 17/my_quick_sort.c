@@ -26,20 +26,14 @@ void my_qs(int arr[], int n){
     int pivot = arr[n];
     int temp;
 
-    int j_val;
-    int i_val;
 
 
     while(j < n){
         if(*p < pivot){
             i++;
-            j_val = arr[j];
-            i_val = arr[i];
-            temp = j_val;
-            j_val = i_val;
-            i_val= temp;
-            arr[i] = i_val;
-            arr[j] = j_val;
+            temp = arr[j];
+            arr[j] = arr[i];
+            arr[i] = temp;
             
         }
         p++;
