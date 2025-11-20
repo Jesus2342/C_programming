@@ -19,16 +19,22 @@ Command file_cmd[] =
 };
 
 
-void search_cmd (char *user_input, Command cmds[]);
+void search_cmd (char *user_input, Command cmd_list[], int n_cmd_list);
 
 int main(){
 
-    char *cmd_input_user = "new";
+    Command my_command;
 
-    search_cmd(cmd_input_user, file_cmd);
+    my_command.cmd_name = "new";
 
+    int n_members = sizeof(file_cmd) / (sizeof(file_cmd[0].cmd_name) + sizeof(file_cmd[0].cmd_pointer));
+    search_cmd(my_command.cmd_name, file_cmd, n_members);
 
-
+    //Assign the address  of a function a pointer 
+    file_cmd[0].cmd_pointer = &new_cmd;
+    file_cmd[1].cmd_pointer = &open_cmd;
+    file_cmd[2].cmd_pointer = &close_cmd;
+   
     return 0;
 }
 
@@ -43,6 +49,16 @@ void close_cmd(void){
     printf("------RESPONSE----- CLOSE CMD");
 }
 
-void search_cmd (char *user_input, Command cmds[]){
-    
+void search_cmd (char *user_input, Command cmd_list[], int n_cmd_list){
+
+    for(int i = 0; i < n_cmd_list; i++){
+        if(cmd_list[i].cmd_name == user_input){
+             printf("Executed command --> <%s>\n", cmd_list[i].cmd_name);
+             file_cmd[i].cmd_pointer();
+             return;
+        }
+    }
+
+    printf("Command was not found in the list");
+
 }
