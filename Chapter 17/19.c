@@ -25,9 +25,22 @@ int main(){
 
     char *cmd_input_user = "new";
 
-    search_cmd(cmd_input_user, file_cmd);
+    //search_cmd(cmd_input_user, file_cmd);
 
+    Command my_command;
 
+    my_command.cmd_name = "new";
+
+    //printf("Command entered by user ---> %s\n", my_command.cmd_name);
+
+    //printf("%s\n", file_cmd[1].cmd_name);
+    
+    
+    for(int i = 0; i < 3; i++){
+        if(my_command.cmd_name == file_cmd[i].cmd_name){
+            new_cmd();
+        }
+    }
 
     return 0;
 }
@@ -44,5 +57,7 @@ void close_cmd(void){
 }
 
 void search_cmd (char *user_input, Command cmds[]){
-    
+    int second_command = 1;
+    printf("Executed command was -- %s", cmds[second_command]);
+
 }
