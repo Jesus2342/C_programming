@@ -19,29 +19,16 @@ Command file_cmd[] =
 };
 
 
-void search_cmd (char *user_input, Command cmds[]);
+void search_cmd (char *user_input, Command cmd_list[]);
 
 int main(){
 
-    char *cmd_input_user = "new";
-
-    //search_cmd(cmd_input_user, file_cmd);
-
     Command my_command;
 
-    my_command.cmd_name = "new";
+    my_command.cmd_name = "open";
 
-    //printf("Command entered by user ---> %s\n", my_command.cmd_name);
-
-    //printf("%s\n", file_cmd[1].cmd_name);
-    
-    
-    for(int i = 0; i < 3; i++){
-        if(my_command.cmd_name == file_cmd[i].cmd_name){
-            new_cmd();
-        }
-    }
-
+    search_cmd(my_command.cmd_name, file_cmd);
+   
     return 0;
 }
 
@@ -56,8 +43,15 @@ void close_cmd(void){
     printf("------RESPONSE----- CLOSE CMD");
 }
 
-void search_cmd (char *user_input, Command cmds[]){
-    int second_command = 1;
-    printf("Executed command was -- %s", cmds[second_command]);
+void search_cmd (char *user_input, Command cmd_list[]){
+
+    for(int i = 0; i < 3; i++){
+        if(cmd_list[i].cmd_name == user_input){
+             printf("Executed command --> <%s>\n", cmd_list[1].cmd_name);
+             return;
+        }
+    }
+
+    printf("Command was not found in the list");
 
 }
