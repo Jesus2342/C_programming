@@ -1,0 +1,1 @@
+ay_str, reminders[i]
