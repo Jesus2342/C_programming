@@ -1,0 +1,23 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int f1(int (*f)(int));
+int f2(int i);
+
+
+int main(){
+    printf("Answer: %d\n", f1(f2));
+    return 0;
+}
+
+int f1( int(*f)(int)){
+    int n = 0;
+    while((*f)(n)) n++;
+    return n; 
+}
+
+int f2(int i){
+    i = i;
+    int res = i * i + i - 12;
+    return  res;
+}
