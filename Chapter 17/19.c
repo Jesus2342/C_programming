@@ -25,9 +25,14 @@ int main(){
 
     Command my_command;
 
-    my_command.cmd_name = "open";
+    my_command.cmd_name = "close";
 
     search_cmd(my_command.cmd_name, file_cmd);
+
+    //Assign the address  of a function a pointer 
+    file_cmd[0].cmd_pointer = &new_cmd;
+    file_cmd[1].cmd_pointer = &open_cmd;
+    file_cmd[2].cmd_pointer = &close_cmd;
    
     return 0;
 }
@@ -47,7 +52,8 @@ void search_cmd (char *user_input, Command cmd_list[]){
 
     for(int i = 0; i < 3; i++){
         if(cmd_list[i].cmd_name == user_input){
-             printf("Executed command --> <%s>\n", cmd_list[1].cmd_name);
+             printf("Executed command --> <%s>\n", cmd_list[i].cmd_name);
+             file_cmd[i].cmd_pointer();
              return;
         }
     }
