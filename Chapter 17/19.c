@@ -27,8 +27,6 @@ int main(){
 
     my_command.cmd_name = "new";
 
-    
-
     int n_members = sizeof(file_cmd) / (sizeof(file_cmd[0].cmd_name) + sizeof(file_cmd[0].cmd_pointer));
     search_cmd(my_command.cmd_name, file_cmd, n_members);
 
